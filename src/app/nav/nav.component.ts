@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import * as typeformEmbed from '@typeform/embed'
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class NavComponent implements OnInit {
 
   constructor() { }
 
@@ -17,4 +17,5 @@ export class HeaderComponent implements OnInit {
     typeformEmbed.makePopup('https://form.typeform.com/to/F1FjNA3D', {mode: 'popup', autoOpen: true})
 
   }
+
 }

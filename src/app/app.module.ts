@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { ServicesComponent } from './services/services.component';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { ServicesComponent } from './services/services.component';
     HomePageComponent,
     HomePageComponent,
     HeaderComponent,
-    ServicesComponent
+    ServicesComponent,
+    QuizPageComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

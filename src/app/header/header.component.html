@@ -3,57 +3,19 @@
     <span></span>
     <span></span>
   </div>
-  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
-    <div class="container">
-      <a href="index.html" class="navbar-brand"
-        ><img src="../../assets/roomeet-logo.png" class="image-brand" alt=""
-      /></a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarCollapse"
-        aria-controls="navbarCollapse"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="lni-menu"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto w-100 justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#home">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#features">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#pricing">Precio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#team">Equipo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#contact">Contacto</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-singin" href="#">Pruebalo</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <app-nav></app-nav>
   <div class="container">
     <div class="row space-100">
       <div class="col-lg-6 col-md-12 col-xs-12">
         <div class="contents">
           <h2 class="head-title">Conéctate con personas que te agraden</h2>
           <p>
-            Completa nuestro quiz y descubre las personas que podrían ser tus próximos amigos
+            Completa nuestro quiz y descubre las personas que podrían ser tus
+            próximos amigos
           </p>
           <div class="header-button">
             <a
-              href=""
+              (click)="showQuiz()"
               rel="nofollow"
               target="_blank"
               class="btn btn-border-filled"
