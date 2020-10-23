@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
-import { QuizPageComponent } from './quiz-page/quiz-page.component';
 
 const routes: Routes = [
   {
-    path:'home',
+    path:'',
     component:HomePageComponent
-  },
-  {
-    path:'quiz',
-    component:QuizPageComponent
   },
 ];
 
