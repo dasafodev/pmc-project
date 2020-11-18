@@ -11,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { PrecioComponent } from './precio/precio.component';
 import { EquipoComponent } from './equipo/equipo.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { SurveyComponent } from './survey/survey.component';
 
 
 @NgModule({
@@ -24,15 +25,17 @@ import { ContactoComponent } from './contacto/contacto.component';
       NavComponent,
       PrecioComponent,
       EquipoComponent,
-      ContactoComponent
+      ContactoComponent,
+      SurveyComponent
    ],
    imports: [
-	 BrowserModule,
-	 AppRoutingModule
-	],
+      BrowserModule,
+      AppRoutingModule
+   ],
    providers: [],
    bootstrap: [
-      AppComponent
+      AppComponent,
+      SurveyComponent
    ]
 })
 export class AppModule { }
