@@ -1,0 +1,6 @@
+
+class Survey {
+  constructor() {
+
+  }
+}

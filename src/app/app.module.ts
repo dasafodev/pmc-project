@@ -12,6 +12,11 @@ import { PrecioComponent } from './precio/precio.component';
 import { EquipoComponent } from './equipo/equipo.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { SurveyComponent } from './survey/survey.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FirebaseModulosModule } from './firebase-modulos/firebase-modulos.module';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,12 +31,24 @@ import { SurveyComponent } from './survey/survey.component';
       PrecioComponent,
       EquipoComponent,
       ContactoComponent,
-      SurveyComponent
+      SurveyComponent,
+      LoginComponent,
+      AdminComponent,
+
+
    ],
    imports: [
       BrowserModule,
-      AppRoutingModule
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      FirebaseModulosModule,
+      ReactiveFormsModule,
+      FormsModule
+
+
+
    ],
+
    providers: [],
    bootstrap: [
       AppComponent,
