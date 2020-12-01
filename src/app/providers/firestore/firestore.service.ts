@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { Survey } from 'src/app/models/survey';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +9,8 @@ export class FirestoreService {
   constructor(
     private firestore: AngularFirestore
   ) {}
-  public createSurvey(data: {nombre: string, url: string}) {
+
+  public createSurvey(data: Survey) {
     return this.firestore.collection('surveys').add(data);
   }
   public getSurvey(documentId: string) {

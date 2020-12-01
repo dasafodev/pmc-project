@@ -6,15 +6,21 @@ import * as Survey from "survey-angular";
 
 
 import "survey-angular/modern.css";
+import { FirestoreService } from '../providers/firestore/firestore.service';
 
 Survey.StylesManager.applyTheme("bootstrap");
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: "survey",
-  template: `<div class="survey-container contentcontainer codecontainer">
-    <div id="surveyElement"></div>
-  </div>`,
+  template: `
+  <div class="container">
+  <div class="survey-container contentcontainer codecontainer">
+  <div id="surveyElement"></div>
+  </div>
+  </div>
+
+  `,
   styleUrls: ['./survey.component.css']
 })
 
@@ -22,6 +28,8 @@ export class SurveyComponent implements OnInit {
   @Output() submitSurvey = new EventEmitter<any>();
   @Input()
   result: any;
+
+  constructor( private store :FirestoreService ){}
 
   ngOnInit() {
     var json = {
@@ -295,4 +303,15 @@ export class SurveyComponent implements OnInit {
     Survey.SurveyNG.render('surveyElement', { model: model });
   }
 
+
+  saveSurvey(){
+    this.store.createSurvey({
+      adminId:"String",
+      userName: "String",
+      userEmail:"String",
+      group:-1,
+      age:2,
+      questions:[1,5,4]
+    });
+  }
 }
