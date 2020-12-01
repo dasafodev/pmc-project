@@ -319,7 +319,7 @@ export class SurveyComponent implements OnInit {
 
 
 
-  saveSurvey(survey) {
+  saveSurvey = (survey) => {
 
     let obj = JSON.parse(JSON.stringify(survey.data));
 
