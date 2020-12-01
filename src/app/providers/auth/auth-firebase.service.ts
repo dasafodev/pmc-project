@@ -28,4 +28,8 @@ export class AuthFirebaseService {
   signInWithEmail(email, pass): Promise<firebase.default.auth.UserCredential> {
     return this.afAuth.signInWithEmailAndPassword(email, pass);
   }
+
+  async logout(){
+    return await this.afAuth.signOut();
+  }
 }
