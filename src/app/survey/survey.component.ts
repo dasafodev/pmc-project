@@ -1,200 +1,298 @@
-import { Component, OnInit } from '@angular/core';
-import * as SurveyEditor from 'surveyjs-editor';
-import * as Survey from 'survey-angular';
+import { Component, Input, EventEmitter, Output, OnInit } from "@angular/core";
+
+
+import * as Survey from "survey-angular";
+
+
+
+import "survey-angular/modern.css";
+
+Survey.StylesManager.applyTheme("bootstrap");
 
 @Component({
-  selector: 'app-survey',
-  template: `<div id="surveyContainer"></div>`,
+  // tslint:disable-next-line:component-selector
+  selector: "survey",
+  template: `<div class="survey-container contentcontainer codecontainer">
+    <div id="surveyElement"></div>
+  </div>`,
   styleUrls: ['./survey.component.css']
 })
+
 export class SurveyComponent implements OnInit {
-  public title = "Survey"
-
-
-
-  editor: SurveyEditor.SurveyEditor;
+  @Output() submitSurvey = new EventEmitter<any>();
+  @Input()
+  result: any;
 
   ngOnInit() {
     var json = {
-      "title": "Product/Market Fit Survey Template",
+      "title": "Quiz de perfilamiento",
       "pages": [
         {
           "name": "page1",
           "elements": [
             {
+              "type": "text",
+              "name": "question8",
+              "title": "Dirección de correo electrónico"
+            },
+            {
+              "type": "text",
+              "name": "question10",
+              "title": "Nombre"
+            },
+            {
+              "type": "text",
+              "name": "question11",
+              "title": "Edad"
+            },
+            {
               "type": "radiogroup",
-              "name": "customer_role",
-              "title": "What best describes your role?",
-              "hasOther": true,
-              "choices": [
-                "Engineering Lead",
-                "Project Manager",
-                "Software Developer",
-                "Designer",
-                "Product Manager",
-                "CEO / Founder",
-                "Customer Support"
-              ],
-              "otherText": "Other",
-              "colCount": 3
-            }, {
-              "type": "radiogroup",
-              "name": "start_using",
-              "title": "How did you start using the product?",
+              "name": "question12",
+              "title": "Sexo",
               "choices": [
                 {
-                  "value": "created",
-                  "text": "I created my account"
-                }, {
-                  "value": "invited",
-                  "text": "I was invited to an account"
+                  "value": "item1",
+                  "text": "Femenino"
+                },
+                {
+                  "value": "item2",
+                  "text": "Masculino"
+                },
+                {
+                  "value": "item3",
+                  "text": "Otro"
                 }
               ]
-            }, {
+            },
+            {
               "type": "radiogroup",
-              "name": "product_discovering",
-              "title": "How did you first discover the product? ",
-              "hasOther": true,
+              "name": "question13",
+              "title": "Número de compañeros",
               "choices": [
-                "Friend or colleague", "Search engine", "Facebook", "Twitter", "Blog"
-              ],
-              "otherText": "Other",
-              "colCount": 3
-            }, {
-              "type": "radiogroup",
-              "name": "paid_customer",
-              "title": "Do you currently pay for the product? ",
-              "isRequired": true,
-              "choices": ["Yes", "No"]
+                {
+                  "value": "item1",
+                  "text": "0"
+                },
+                {
+                  "value": "item2",
+                  "text": "1"
+                },
+                {
+                  "value": "item3",
+                  "text": "2"
+                },
+                {
+                  "value": "item4",
+                  "text": "3"
+                }
+              ]
             }
           ]
-        }, {
+        },
+        {
           "name": "page2",
           "elements": [
             {
-              "type": "radiogroup",
-              "name": "product_fit",
-              "title": "How would you feel if you could no longer use the product?",
-              "isRequired": true,
-              "choices": [
-                {
-                  "value": "3",
-                  "text": "Very disappointed"
-                }, {
-                  "value": "2",
-                  "text": "Somewhat disappointed"
-                }, {
-                  "value": "1",
-                  "text": "Not disappointed"
-                }
-              ]
-            }, {
-              "type": "comment",
-              "name": "product_fit_comment",
-              "visibleIf": "{product_fit} notempty",
-              "title": "Please help us understand why you selected the answer above"
+              "type": "rating",
+              "name": "question1",
+              "title": "¿Qué tanto te gusta hablar?"
+            },
+            {
+              "type": "rating",
+              "name": "question3",
+              "title": "¿Qué tan fácil le es estresarse?"
+            },
+            {
+              "type": "rating",
+              "name": "question2",
+              "title": "¿Qué tanto le importan los demás?"
+            },
+            {
+              "type": "rating",
+              "name": "question6",
+              "title": "¿Deja sus cosas en cualquier lugar?"
+            },
+            {
+              "type": "rating",
+              "name": "question5",
+              "title": "¿Qué tan fácil le es sentirse cómodo?"
             }
-          ]
-        }, {
+          ],
+          "title": "Personal y cualidades"
+        },
+        {
           "name": "page3",
           "elements": [
             {
-              "type": "radiogroup",
-              "name": "product_alternative",
-              "title": "What would you use as an alternative if [the product] were no\nlonger available?",
-              "hasOther": true,
-              "choices": [
-                "Alternative 1",
-                "Alternative 2",
-                "Alternative 3",
-                "Alternative 4",
-                "Alternative 5",
-                "Alternative 6"
-              ],
-              "otherText": "Other (please name)",
-              "colCount": 3
-            }, {
-              "type": "radiogroup",
-              "name": "product_benefit",
-              "title": "What is the primary benefit that you have received from the\nproduct?",
-              "hasOther": true,
-              "choices": [
-                "Benefit 1",
-                "Benefit 2",
-                "Benefit 3",
-                "Benefit 4",
-                "Benefit 5",
-                "Benefit 6"
-              ],
-              "colCount": 3
-            }, {
-              "type": "radiogroup",
-              "name": "product_recommend",
-              "title": "Have you recommended the product to anyone?",
-              "choices": ["Yes", "No"]
+              "type": "rating",
+              "name": "question4",
+              "title": "¿Usa groserías o malas palabras al hablar?"
+            },
+            {
+              "type": "rating",
+              "name": "question15",
+              "title": "¿Qué tan empático es?"
+            },
+            {
+              "type": "rating",
+              "name": "question14",
+              "title": "¿Qué tanto le gusta socializar?"
+            },
+            {
+              "type": "rating",
+              "name": "question9",
+              "title": "¿Qué tanto le gusta iniciar conversaciones?"
+            },
+            {
+              "type": "rating",
+              "name": "question7",
+              "title": "¿Qué tanto le gusta el orden y la limpieza?"
             }
-          ]
-        }, {
+          ],
+          "title": "Personalidad y cualidades"
+        },
+        {
           "name": "page4",
           "elements": [
             {
               "type": "rating",
-              "name": "nps_score",
-              "title": "How likely are you to recommend the product to a friend or\ncolleague? ",
-              "isRequired": true,
-              "rateMin": 0,
-              "rateMax": 10,
-              "minRateDescription": "Most unlikely",
-              "maxRateDescription": "Most likely"
-            }, {
-              "type": "radiogroup",
-              "name": "favorite_functionality",
-              "title": "What's your favorite functionality / add-on for the product?",
-              "hasOther": true,
-              "choices": [
-                "Feature 1",
-                "Feature 2",
-                "Feature 3",
-                "Feature 4",
-                "Feature 5",
-                "Feature 6"
-              ],
-              "colCount": 3
-            }, {
-              "type": "comment",
-              "name": "product_improvement",
-              "title": "How could the product be improved to better meet your\nneeds?"
+              "name": "question16",
+              "title": "¿Qué tanto le gusta divertirse?"
+            },
+            {
+              "type": "rating",
+              "name": "question20",
+              "title": "¿Qué tanto le gusta estudiar con otros?"
+            },
+            {
+              "type": "rating",
+              "name": "question18",
+              "title": "¿Qué tanto le gustan los videojuegos?"
+            },
+            {
+              "type": "rating",
+              "name": "question19",
+              "title": "¿Qué tanto le gustan los deportes?"
+            },
+            {
+              "type": "rating",
+              "name": "question17",
+              "title": "¿Qué tanto le gustan los libros?"
             }
-          ]
-        }, {
+          ],
+          "title": "Gustos y preferencias"
+        },
+        {
           "name": "page5",
           "elements": [
             {
-              "type": "multipletext",
-              "name": "contact_customer",
-              "title": "Want us to follow-up? Leave your name and email here:",
-              "items": [
+              "type": "rating",
+              "name": "question22",
+              "title": "¿Qué tanto le gusta el anime/manga?"
+            },
+            {
+              "type": "rating",
+              "name": "question25",
+              "title": "¿Qué tanto le gusta ver partidos de fútbol?"
+            },
+            {
+              "type": "rating",
+              "name": "question24",
+              "title": "¿Qué tanto le gusta el maquillaje?"
+            },
+            {
+              "type": "rating",
+              "name": "question23",
+              "title": "¿Qué tanto le gusta la música?"
+            },
+            {
+              "type": "rating",
+              "name": "question21",
+              "title": "¿Qué tan tarde le gusta acostarse?"
+            }
+          ],
+          "title": "Gustos y preferencias"
+        },
+        {
+          "name": "page6",
+          "elements": [
+            {
+              "type": "text",
+              "name": "question26",
+              "title": "Descríbase a si mismo"
+            },
+            {
+              "type": "checkbox",
+              "name": "question27",
+              "title": "¿Cuál es su objetivo?",
+              "choices": [
                 {
-                  "name": "Name"
-                }, {
-                  "name": "E-mail",
-                  "inputType": "email",
-                  "validators": [
-                    {
-                      "type": "email"
-                    }
-                  ]
+                  "value": "item1",
+                  "text": "Conocer gente similar"
+                },
+                {
+                  "value": "item2",
+                  "text": "Estar cómodo"
+                },
+                {
+                  "value": "item3",
+                  "text": "Estudiar tranquilo"
+                },
+                {
+                  "value": "item4",
+                  "text": "Conocer gente diferente"
+                },
+                {
+                  "value": "item5",
+                  "text": "Divertirme"
                 }
               ]
             }
-          ]
+          ],
+          "title": "Final"
+        },
+        {
+          "name": "page7",
+          "elements": [
+            {
+              "type": "text",
+              "name": "question28",
+              "title": "¿Qué información adicional consideraría relevante preguntar?"
+            },
+            {
+              "type": "text",
+              "name": "question29",
+              "title": "¿Qué preguntas quitaría ?"
+            },
+            {
+              "type": "radiogroup",
+              "name": "question30",
+              "title": "¿Cree que esto le ayudará a conseguir buenos compañeros?",
+              "choices": [
+                {
+                  "value": "item1",
+                  "text": "Sí"
+                },
+                {
+                  "value": "item2",
+                  "text": "No"
+                },
+                {
+                  "value": "item3",
+                  "text": "Otro"
+                }
+              ]
+            }
+          ],
+          "title": "Opiniones y sugerencias"
         }
       ]
     };
 
 
+
     var model = new Survey.ReactSurveyModel(json);
-    Survey.SurveyNG.render('surveyContainer', { model: model });
+    Survey.SurveyNG.render('surveyElement', { model: model });
   }
 
 }
