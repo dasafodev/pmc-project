@@ -326,14 +326,19 @@ export class SurveyComponent implements OnInit {
     const values = Object.values(obj);
     console.log(values);
     var list = Array<number>()
-
+    let i = 0;
     for (const value of values) {
       let isnum = /^\d+$/.test(String(value));
+
       if (isnum) {
         list.push(parseInt(String(value)));
       }
 
+      console.log(i);
+      i = i + 1;
+
     };
+    list.splice(0, 1);
     console.log(list);
 
     this.store.createSurvey({
