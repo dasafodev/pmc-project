@@ -19,26 +19,22 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Nombre</th>
         <th scope="col">Email</th>
-        <th scope="col">Edad</th>
         <th scope="col">Grupo</th>
-        <th scope="col">Respuestas</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let survey of surveys; index as i; first as isFirst">
-          <th scope="row">{{i+1}}</th>
-          <td>{{survey.userName}}</td>
-          <td>{{survey.userEmail}}</td>
-          <td>{{survey.age}}</td>
-          <td>{{survey.group}}</td>
-          <td>Completas</td>
+
+      <tr *ngFor="let l of dato; index as i; first as isFirst">
+
+        <th scope="row">{{i+1}}</th>
+        <td>{{l.email}}</td>
+        <td>{{l.group}}</td>
+
+
+
       </tr>
 
     </tbody>
   </table>
-
-
-
-
